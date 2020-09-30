@@ -15,5 +15,14 @@ src
 │      │     └──responses
 │      │                ├── CreateBinResponse
 │      │                └── ErrorRequestResponse
-│      └──
+│      └──resources
 └── test
+       ├──java
+             └──quin
+                   ├── accesscontrol
+                   ├── binsTests
+                   ├── client
+                   ├── data
+                   ├── service
+                   ├── utils
+                   └── RestClient
