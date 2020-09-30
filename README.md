@@ -48,3 +48,7 @@ src
                    │      └── exampleUpdateBin.json
                    └── testSuites
                                 └── binsApisTestSuite.xml
+```
+
+### How to Build
+```mvn clean install```
