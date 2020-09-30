@@ -18,11 +18,33 @@ src
 │      └──resources
 └── test
        ├──java
-             └──quin
-                   ├── accesscontrol
-                   ├── binsTests
-                   ├── client
-                   ├── data
-                   ├── service
-                   ├── utils
-                   └── RestClient
+       │     └──quin
+       │           ├── accesscontrol
+       │           │               └── AccessControlTest
+       │           ├── binsTests
+       │           │           ├── CreateBinTest
+       │           │           ├── DeleteBinTest
+       │           │           ├── ReadBinTest
+       │           │           └── UpdateBinTest
+       │           ├── client
+       │           │        ├── CreateBinRestClient
+       │           │        ├── DeleteBinsRestClient
+       │           │        ├── ReadBinsRestClient
+       │           │        └── UpdateBinsRestClient
+       │           ├── data
+       │           │      └── BinDate
+       │           ├── service
+       │           │         ├── CreateBinsService
+       │           │         ├── DeleteBinsService
+       │           │         ├── ReadBinsService
+       │           │         └── UpdateBinsService
+       │           ├── utils
+       │           │       └── BinsUtils
+       │           └── RestClient
+       └── Resources
+                   ├── Data
+                   │      ├── apiKey.json
+                   │      ├── exampleBin.json
+                   │      └── exampleUpdateBin.json
+                   └── testSuites
+                                └── binsApisTestSuite.xml
