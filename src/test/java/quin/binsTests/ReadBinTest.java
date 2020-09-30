@@ -1,4 +1,4 @@
-package quin.bins;
+package quin.binsTests;
 
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
@@ -10,10 +10,10 @@ import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static quin.data.binData.BIN_ID;
-import static quin.data.binData.EXAMPLE_BODY;
-import static quin.data.binData.INVALID_BIN_ID;
-import static quin.data.binData.INVALID_BIN_ID_MESSAGE;
+import static quin.data.BinData.BIN_ID;
+import static quin.data.BinData.EXAMPLE_BODY;
+import static quin.data.BinData.INVALID_BIN_ID;
+import static quin.data.BinData.INVALID_BIN_ID_MESSAGE;
 
 
 public class ReadBinTest {

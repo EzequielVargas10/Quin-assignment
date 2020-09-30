@@ -1,12 +1,8 @@
 package quin.service;
 
-import io.restassured.response.ExtractableResponse;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.parser.ParseException;
 import quin.client.ReadBinsRestClient;
-import requests.CreateBinRequest;
-import responses.CreateBinResponse;
 import responses.ErrorRequestResponse;
 
 import java.io.IOException;

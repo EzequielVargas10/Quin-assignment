@@ -4,23 +4,21 @@ import io.restassured.response.ValidatableResponse;
 import org.json.simple.parser.ParseException;
 import quin.client.CreateBinRestClient;
 import requests.CreateBinRequest;
-import responses.CreateBinResponse;
+import responses.BinResponse;
 import responses.ErrorRequestResponse;
 
 import java.io.IOException;
 
-import static org.apache.http.HttpStatus.SC_OK;
-import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
-import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
+import static org.apache.http.HttpStatus.*;
 
 public class CreateBinsService{
 
     private CreateBinRestClient createBinsRestClient = new CreateBinRestClient();
 
-    public CreateBinResponse createBin(Object body) throws IOException, ParseException {
+    public BinResponse createBin(Object body) throws IOException, ParseException {
         return createBinAndExpectStatus(body, SC_OK)
                 .extract()
-                .as(CreateBinResponse.class);
+                .as(BinResponse.class);
     }
 
     public ErrorRequestResponse createBinErrorResponse(CreateBinRequest createBinRequest) throws IOException, ParseException {
@@ -43,12 +41,20 @@ public class CreateBinsService{
                 .as(ErrorRequestResponse.class);
     }
 
-    public CreateBinResponse createPublicBinWithName(Object body) throws IOException, ParseException {
-        return createBinsRestClient.createPublicBinWithName(body)
+    public BinResponse createPublicBinWithName(Object body, String name) throws IOException, ParseException {
+        return createBinsRestClient.createPublicBinWithName(body, name)
                 .then()
                 .statusCode(SC_OK)
                 .extract()
-                .as(CreateBinResponse.class);
+                .as(BinResponse.class);
+    }
+
+    public ErrorRequestResponse createPublicBinWithNameErrorRequest(Object body, String name) throws IOException, ParseException {
+        return createBinsRestClient.createPublicBinWithName(body, name)
+                .then()
+                .statusCode(SC_UNPROCESSABLE_ENTITY)
+                .extract()
+                .as(ErrorRequestResponse.class);
     }
 
     public ValidatableResponse createBinAndExpectStatus(Object body,

@@ -1,14 +1,18 @@
-package quin.bins;
+package quin.binsTests;
 
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 import quin.service.CreateBinsService;
 import quin.utils.BinsUtils;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static quin.data.binData.EXAMPLE_BODY;
+import static quin.data.BinData.EXAMPLE_BODY;
+import static quin.data.BinData.LONGER_NAME_MESSAGE;
+import static quin.data.BinData.LONG_NAME;
+import static quin.data.BinData.NAME;
 import static org.hamcrest.core.IsEqual.equalTo;
 import org.json.simple.JSONObject;
-import responses.CreateBinResponse;
+import responses.BinResponse;
+import responses.ErrorRequestResponse;
 
 import java.io.IOException;
 
@@ -21,7 +25,7 @@ public class CreateBinTest {
     @Test
     public void canCreateBin() throws IOException, ParseException {
         body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
-        CreateBinResponse binResponse = createBinsService.createBin(body);
+        BinResponse binResponse = createBinsService.createBin(body);
 
         assertThat(binResponse.getSuccess(), equalTo(true));
         assertThat(binResponse.getData().get("sample"), equalTo("Hello World"));
@@ -30,12 +34,19 @@ public class CreateBinTest {
     @Test
     public void canCreateAPublicBinWithName() throws IOException, ParseException {
         body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
-        CreateBinResponse binResponse = createBinsService.createPublicBinWithName(body);
-
-        System.out.print(binResponse.getId());
+        BinResponse binResponse = createBinsService.createPublicBinWithName(body, NAME);
 
         assertThat(binResponse.getSuccess(), equalTo(true));
         assertThat(binResponse.getData().get("sample"), equalTo("Hello World"));
         assertThat(binResponse.getPrivateStatus(), equalTo(false));
+    }
+
+    @Test
+    public void cannotCreateBinWithLongerName() throws IOException, ParseException {
+        body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
+        ErrorRequestResponse binResponse = createBinsService.createPublicBinWithNameErrorRequest(body,LONG_NAME);
+
+        assertThat(binResponse.getSuccess(), equalTo(false));
+        assertThat(binResponse.getMessage(), equalTo(LONGER_NAME_MESSAGE));
     }
 }

@@ -8,11 +8,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 
-@JsonPropertyOrder({"success", "data", "id", "private", "name"})
+@JsonPropertyOrder({"success", "data", "id", "private", "message"})
 @JsonIgnoreProperties(
         ignoreUnknown = true
 )
-public class CreateBinResponse {
+public class BinResponse {
 
     @JsonProperty("success")
     @Valid
@@ -34,10 +34,10 @@ public class CreateBinResponse {
     @NotNull
     private Boolean privateStatus;
 
-    @JsonProperty("name")
+    @JsonProperty("message")
     @Valid
     @NotNull
-    private String name;
+    private String message;
 
 
     @JsonProperty("success")
@@ -60,8 +60,8 @@ public class CreateBinResponse {
         return this.privateStatus;
     }
 
-    @JsonProperty("name")
-    public String getName() {
-        return this.name;
+    @JsonProperty("message")
+    public String getMessage() {
+        return this.message;
     }
 }

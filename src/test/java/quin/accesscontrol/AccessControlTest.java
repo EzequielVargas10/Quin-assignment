@@ -11,10 +11,10 @@ import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static quin.data.binData.EXAMPLE_BODY;
-import static quin.data.binData.ERROR_MESSAGE_NO_API_KEY;
+import static quin.data.BinData.EXAMPLE_BODY;
+import static quin.data.BinData.ERROR_MESSAGE_NO_API_KEY;
 
-public class AccessControl {
+public class AccessControlTest {
 
     private CreateBinsService createBinsService = new CreateBinsService();
     private BinsUtils binsUtils = new BinsUtils();

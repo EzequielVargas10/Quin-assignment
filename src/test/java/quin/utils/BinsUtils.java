@@ -8,6 +8,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import static quin.data.BinData.API_KEY;
+
 public class BinsUtils {
 
     private static ObjectMapper mapper = new ObjectMapper();
@@ -25,5 +27,9 @@ public class BinsUtils {
         Object obj = jsonParser.parse(new FileReader(jsonLocation));
         JSONObject jsonObject = (JSONObject) obj;
         return jsonObject.toJSONString();
+    }
+
+    public JSONObject getApiKey() throws IOException, ParseException {
+        return convertJsonFileToJsonObject(API_KEY);
     }
 }
