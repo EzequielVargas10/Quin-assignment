@@ -26,6 +26,7 @@ public class CreateBinTest {
     public void canCreateBin() throws IOException, ParseException {
         body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
         BinResponse binResponse = createBinsService.createBin(body);
+        BinsUtils.fillBins(binResponse.getId());
 
         assertThat(binResponse.getSuccess(), equalTo(true));
         assertThat(binResponse.getData().get("sample"), equalTo("Hello World"));
@@ -35,6 +36,7 @@ public class CreateBinTest {
     public void canCreateAPublicBinWithName() throws IOException, ParseException {
         body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
         BinResponse binResponse = createBinsService.createPublicBinWithName(body, NAME);
+        binsUtils.fillBins(binResponse.getId());
 
         assertThat(binResponse.getSuccess(), equalTo(true));
         assertThat(binResponse.getData().get("sample"), equalTo("Hello World"));

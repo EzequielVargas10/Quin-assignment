@@ -6,10 +6,10 @@
     <test name="BinsApis" enabled="true">
         <classes>
             <class name="quin.binsTests.CreateBinTest"/>
-            <class name="quin.binsTests.DeleteBinTest"/>
+            <class name="quin.accesscontrol.AccessControlTest"/>
             <class name="quin.binsTests.ReadBinTest"/>
             <class name="quin.binsTests.UpdateBinTest"/>
-            <class name="quin.accesscontrol.AccessControlTest"/>
+            <class name="quin.binsTests.DeleteBinTest"/>
         </classes>
     </test>
 </suite>

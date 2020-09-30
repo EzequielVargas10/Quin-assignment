@@ -11,7 +11,7 @@ public class BinData {
     public static final String BIN_ID = "5f73a8e6302a837e9570a209";
     public static final String INVALID_BIN_ID = "73a8e6302a837e9570a200";
     public static final String INVALID_BIN_ID_MESSAGE = "Invalid Bin ID";
-    public static final String SUCCESS_DELETE_MESSAGE = "Bin is deleted successfully. versions removed.";
+    public static final String SUCCESS_DELETE_MESSAGE = "Bin %s is deleted successfully. %s versions removed.";
     public static final String EMPTY_JSON_MESSAGE = "JSON cannot be empty";
     public static final String LONGER_NAME_MESSAGE = "Bin Name cannot be longer than 128 characters.";
 

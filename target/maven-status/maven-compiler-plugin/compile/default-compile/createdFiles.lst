@@ -1,0 +1,3 @@
+responses/BinResponse.class
+requests/CreateBinRequest.class
+responses/ErrorRequestResponse.class
