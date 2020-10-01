@@ -41,11 +41,11 @@ public class BinsUtils {
         list.add(binId);
     }
 
-    public static String getBins(){
-        return list.get(0);
+    public static String getBins(Integer index){
+        return list.get(index);
     }
 
     public static void deleteBins(){
-        list.remove(0);
+        list.remove(1);
     }
 }

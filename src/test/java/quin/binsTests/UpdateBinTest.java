@@ -15,7 +15,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static quin.data.BinData.EXAMPLE_UPDATE_BODY;
 import static quin.data.BinData.EMPTY_JSON_MESSAGE;
 
-
 public class UpdateBinTest {
 
     private UpdateBinsService updateBinsService = new UpdateBinsService();
@@ -25,7 +24,7 @@ public class UpdateBinTest {
     @Test
     public void canUpdateABin() throws IOException, ParseException {
         body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_UPDATE_BODY);
-        BinResponse binResponse = updateBinsService.updateBin(body,BinsUtils.getBins());
+        BinResponse binResponse = updateBinsService.updateBin(body,BinsUtils.getBins(0));
 
         assertThat(binResponse.getSuccess(), equalTo(true));
         assertThat(binResponse.getData().get("sample"), equalTo("Hallo World"));
@@ -34,7 +33,7 @@ public class UpdateBinTest {
     @Test
     public void cannotUpdateABin() throws IOException, ParseException {
         JSONObject emptyBody = new JSONObject();
-        ErrorRequestResponse binRead = updateBinsService.updateBinErrorRequestResponse(emptyBody,BinsUtils.getBins());
+        ErrorRequestResponse binRead = updateBinsService.updateBinErrorRequestResponse(emptyBody,BinsUtils.getBins(0));
 
         assertThat(binRead.getSuccess(), equalTo(false));
         assertThat(binRead.getMessage(), equalTo(EMPTY_JSON_MESSAGE));

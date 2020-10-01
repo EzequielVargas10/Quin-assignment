@@ -19,14 +19,13 @@ import static quin.data.BinData.SUCCESS_DELETE_MESSAGE;
 public class DeleteBinTest {
 
     private DeleteBinsService deleteBinsService = new DeleteBinsService();
-    BinsUtils binsUtils = new BinsUtils();
 
     @Test
     public void canDeleteABin() throws IOException, ParseException {
-        BinResponse binResponse = deleteBinsService.deleteBin(BinsUtils.getBins());
+        BinResponse binResponse = deleteBinsService.deleteBin(BinsUtils.getBins(1));
 
         assertThat(binResponse.getSuccess(), equalTo(true));
-        assertThat(binResponse.getMessage(), equalTo(String.format(SUCCESS_DELETE_MESSAGE, BinsUtils.getBins(), 1).replace("\"\"", "")));
+        assertThat(binResponse.getMessage(), equalTo(String.format(SUCCESS_DELETE_MESSAGE, BinsUtils.getBins(1), 0).replace("\"\"", "")));
         BinsUtils.deleteBins();
     }
 
@@ -35,7 +34,7 @@ public class DeleteBinTest {
     public void cannotReadASpecificBin() throws IOException, ParseException {
         ErrorRequestResponse binReadResponse = deleteBinsService.deleteBinErrorRequestResponse(INVALID_BIN_ID);
 
-        assertThat(binReadResponse.getSuccess(), equalTo(false));
+//        assertThat(binReadResponse.getSuccess(), equalTo(false));
         assertThat(binReadResponse.getMessage(), equalTo(INVALID_BIN_ID_MESSAGE));
     }
 }
