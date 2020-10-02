@@ -18,12 +18,11 @@ import static quin.data.BinData.EMPTY_JSON_MESSAGE;
 public class UpdateBinTest {
 
     private UpdateBinsService updateBinsService = new UpdateBinsService();
-    BinsUtils binsUtils = new BinsUtils();
     private JSONObject body;
 
     @Test
     public void canUpdateABin() throws IOException, ParseException {
-        body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_UPDATE_BODY);
+        body = BinsUtils.convertJsonFileToJsonObject(EXAMPLE_UPDATE_BODY);
         BinResponse binResponse = updateBinsService.updateBin(body,BinsUtils.getBins(0));
 
         assertThat(binResponse.getSuccess(), equalTo(true));

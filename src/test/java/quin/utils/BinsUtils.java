@@ -19,15 +19,15 @@ public class BinsUtils {
     }
 
     private static ObjectMapper mapper = new ObjectMapper();
-    JSONParser jsonParser = new JSONParser();
+    static JSONParser jsonParser = new JSONParser();
     private static List<String> list = new ArrayList<String>();
 
-    public JSONObject convertJsonFileToJsonObject(String jsonLocation) throws IOException, ParseException {
+    public static JSONObject convertJsonFileToJsonObject(String jsonLocation) throws IOException, ParseException {
         Object obj = jsonParser.parse(new FileReader(jsonLocation));
         return (JSONObject) obj;
     }
 
-    public String convertJsonFileToString(String jsonLocation) throws IOException, ParseException {
+    public static String convertJsonFileToString(String jsonLocation) throws IOException, ParseException {
         Object obj = jsonParser.parse(new FileReader(jsonLocation));
         JSONObject jsonObject = (JSONObject) obj;
         return jsonObject.toJSONString();

@@ -19,12 +19,11 @@ import java.io.IOException;
 public class CreateBinTest {
 
     private CreateBinsService createBinsService = new CreateBinsService();
-    private BinsUtils binsUtils = new BinsUtils();
     private JSONObject body;
 
     @Test
     public void canCreateBin() throws IOException, ParseException {
-        body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
+        body = BinsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
         BinResponse binResponse = createBinsService.createBin(body);
         BinsUtils.fillBins(binResponse.getId());
 
@@ -34,9 +33,9 @@ public class CreateBinTest {
 
     @Test
     public void canCreateAPublicBinWithName() throws IOException, ParseException {
-        body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
+        body = BinsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
         BinResponse binResponse = createBinsService.createPublicBinWithName(body, NAME);
-        binsUtils.fillBins(binResponse.getId());
+        BinsUtils.fillBins(binResponse.getId());
 
         assertThat(binResponse.getSuccess(), equalTo(true));
         assertThat(binResponse.getData().get("sample"), equalTo("Hello World"));
@@ -45,7 +44,7 @@ public class CreateBinTest {
 
     @Test
     public void cannotCreateBinWithLongerName() throws IOException, ParseException {
-        body = binsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
+        body = BinsUtils.convertJsonFileToJsonObject(EXAMPLE_BODY);
         ErrorRequestResponse binResponse = createBinsService.createPublicBinWithNameErrorRequest(body,LONG_NAME);
 
         assertThat(binResponse.getSuccess(), equalTo(false));

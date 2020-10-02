@@ -18,13 +18,12 @@ import static quin.data.BinData.INVALID_BIN_ID_MESSAGE;
 public class ReadBinTest {
 
     private ReadBinsService readBinsService = new ReadBinsService();
-    BinsUtils binsUtils = new BinsUtils();
 
     @Test
     public void canReadASpecificBin() throws IOException, ParseException {
         String binRead = readBinsService.getSpecificBin(BinsUtils.getBins(0));
 
-        assertThat(binRead, equalTo(binsUtils.convertJsonFileToString(EXAMPLE_BODY)));
+        assertThat(binRead, equalTo(BinsUtils.convertJsonFileToString(EXAMPLE_BODY)));
     }
 
     // It's trowing a different message ("Invalid Record ID") and "success" parameter is null
